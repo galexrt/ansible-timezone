@@ -1,0 +1,11 @@
+---
+- name: Get timedatectl information
+  command: timedatectl
+  register: timedatectl
+  ignore_errors: yes
+
+- include: timedatectl.yml
+  when: timedatectl.rc == 0
+
+- include: oldway.yml
+  when: timedatectl.rc != 0

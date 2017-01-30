@@ -1,0 +1,23 @@
+---
+- name: Stat timezone file
+  stat:
+    path: "/usr/share/zoneinfo/{{ timezone }}"
+  register: tzcheck
+
+- name: Check if timezone is valid
+  fail:
+    msg: "Invalid timezone given, given timezone was {{ timezone }}\"."
+  when: tzcheck.stat.exists
+
+- name: Link timezone info to etc
+  file:
+    src: "/usr/share/zoneinfo/{{ timezone }}"
+    path: /etc/localtime
+    state: link
+    owner: root
+    group: root
+  register: tzlink
+
+- name: Reconfigure tzdata
+  command: dpkg-reconfigure -f noninteractive tzdata
+  when: tzlink.changed
