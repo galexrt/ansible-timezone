@@ -17,7 +17,5 @@
     owner: root
     group: root
   register: tzlink
-
-- name: Reconfigure tzdata
-  command: dpkg-reconfigure -f noninteractive tzdata
-  when: tzlink.changed
+  notify:
+    - Reconfigure tzdata
