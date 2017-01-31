@@ -1,7 +1,7 @@
 ansible-timezone
-=========
+================
 
-[![Build Status](https://travis-ci.org/galexrt/ansible-.svg?branch=master)](https://travis-ci.org/galexrt/ansible-)
+[![Build Status](https://travis-ci.org/galexrt/ansible-timezone.svg?branch=master)](https://travis-ci.org/galexrt/ansible-timezone)
 
 Ansible role for setting/changing the timezone.
 
@@ -30,7 +30,7 @@ An example playbook on how to use this role:
 ```
 - hosts: servers
   roles:
-     - { role: galexrt.timezone, timezone: "UTC" }
+    - { role: galexrt.timezone, timezone: "UTC" }
 ```
 
 License
