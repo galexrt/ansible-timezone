@@ -2,6 +2,7 @@
 - name: Get timezone list
   command: timedatectl list-timezones --no-pager
   register: timezone_list
+  changed_when: false
 
 - name: Check if timezone is valid
   fail:
