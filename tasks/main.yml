@@ -5,7 +5,7 @@
   ignore_errors: yes
 
 - include: timedatectl.yml
-  when: timedatectl.rc == 0
+  when: timedatectl.rc is defined and timedatectl.rc == 0
 
 - include: oldway.yml
-  when: timedatectl.rc != 0
+  when: timedatectl.rc is defined and timedatectl.rc != 0

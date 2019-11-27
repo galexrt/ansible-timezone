@@ -7,7 +7,7 @@
 - name: Check if timezone is valid
   fail:
     msg: "Invalid timezone given, given timezone was {{ timezone }}\"."
-  when: tzcheck.stat.exists
+  when: tzcheck.stat is defined and tzcheck.stat.exists
 
 - name: Link timezone info to etc
   file:
