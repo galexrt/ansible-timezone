@@ -3,6 +3,8 @@
   command: timedatectl list-timezones --no-pager
   register: timezone_list
   changed_when: false
+  # Don't spam verbose log with this output
+  no_log: true
 
 - name: Check if timezone is valid
   fail:
