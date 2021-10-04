@@ -3,6 +3,7 @@
   command: timedatectl
   register: timedatectl
   ignore_errors: yes
+  changed_when: false
 
 - include: timedatectl.yml
   when: timedatectl.rc is defined and timedatectl.rc == 0
