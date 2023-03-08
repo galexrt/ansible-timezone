@@ -1,8 +1,8 @@
 ---
 - name: Get timedatectl information
-  command: timedatectl
+  ansible.builtin.command: timedatectl
   register: timedatectl
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
 
 - include: timedatectl.yml
