@@ -5,8 +5,8 @@
   ignore_errors: true
   changed_when: false
 
-- include: timedatectl.yml
+- include_tasks: timedatectl.yml
   when: timedatectl.rc is defined and timedatectl.rc == 0
 
-- include: oldway.yml
+- include_tasks: oldway.yml
   when: timedatectl.rc is defined and timedatectl.rc != 0
