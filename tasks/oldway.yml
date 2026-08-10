@@ -1,16 +1,16 @@
 ---
 - name: Stat timezone file
-  stat:
+  ansible.builtin.stat:
     path: "/usr/share/zoneinfo/{{ timezone }}"
   register: tzcheck
 
 - name: Check if timezone is valid
-  fail:
+  ansible.builtin.fail:
     msg: "Invalid timezone given, given timezone was {{ timezone }}\"."
   when: tzcheck.stat is defined and tzcheck.stat.exists
 
 - name: Link timezone info to etc
-  file:
+  ansible.builtin.file:
     src: "/usr/share/zoneinfo/{{ timezone }}"
     path: /etc/localtime
     state: link

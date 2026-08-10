@@ -7,7 +7,7 @@
   no_log: true
 
 - name: Check if timezone is valid
-  fail:
+  ansible.builtin.fail:
     msg: "Invalid timezone given, given timezone was {{ timezone }}\"."
   when: timezone_list.stdout is defined and timezone not in timezone_list.stdout
 
